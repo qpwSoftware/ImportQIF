@@ -20,9 +20,9 @@ Ability to convert from a CSV or Excel file to a QFX file instead of a QIF file.
 But using the QFX format will allow for matching of transactions and using Quicken's system for filling in the categories even in the latest versions of Quicken which have dropped these features for QIF file imports.
 
 To Install ImportQIF.
-Download ImportQIF.zip, and extract that ZIP file to any folder you like.
+Download ImportQIF*.zip, and extract that ZIP file to any folder you like.
 
-To run ImportQIF just double click on ImportQIF*.exe or a shortcut to it.
+To run ImportQIF just double click on ImportQIF.exe or a shortcut to it.
 ​
 To create a shortcut to ImportQIF.exe right click on it and drag to wherever you want the shortcut and select "Create shortcut here".
 
