@@ -22,7 +22,7 @@ But using the QFX format will allow for matching of transactions and using Quick
 To Install ImportQIF.
 Download ImportQIF.zip, and extract that ZIP file to any folder you like.
 
-To run ImportQIF just double click on ImportQIF.exe or a shortcut to it.
+To run ImportQIF just double click on ImportQIF*.exe or a shortcut to it.
 ​
 To create a shortcut to ImportQIF.exe right click on it and drag to wherever you want the shortcut and select "Create shortcut here".
 
