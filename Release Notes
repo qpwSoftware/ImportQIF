@@ -1,0 +1,923 @@
+ImportQIF Release Notes:
+2026.10.11.0
+Removed dead code and updated Run tab documentation to include the backing up and restoring of the settings.
+
+2026.3.26.0
+Moved to GIT
+
+2026.1.19.0
+If the user has the OFX/QFX to QFX option on it was giving the file a type of .QFX even when the input file was a CSV/Excel file.
+
+26.1.5.0
+Changed the version number to reflect the current date.
+Allow comment lines in the CSV files on the File Option tab, the first field must start with #.
+When creating one of the CSV files on the Files Option tab it now adds a header line with the purpose of each column.
+
+6.0.28.0
+Map Securities was using the default security file name for reading the security name mappings even though the user had changed it.
+
+6.0.27.0
+Map Securities now uses Contains, Starts_With, Exactly, and Reg_Exp.
+
+6.0.26.0
+Make sure that the "Enable QFX" and "Convert QFX/OFX to QFX" options are mutually exclusive.
+
+6.0.25.0
+Changed to allow QFX to QFX "conversion", which just allows the user to change the financial institution Id number in the QFX file.
+​
+6.0.24.0
+Added a bit of code to help protect against bad characters in a CSV file.
+​
+6.0.23.0
+Documented the QFX Securities Info file.
+
+6.0.22.0
+Increase the number of digits after the decimal point to 8 for security prices and shares.
+​
+6.0.21.0
+Added the feature to convert an OFX file to a QFX file.  It does this by adding the extra information that is in a QFX file.  Note that since it doesn't change anything else from the original OFX file it is possible that Quicken might reject importing the QFX file because it doesn't understand some of the syntax from the original OFX file.
+​
+6.0.20.0
+Merge of the Quicken's Memorized Payee List wasn't working for some people.  It seems to be a suffix problem, so I changed that, but I also now allow the user to do the export just in case the automatic one fails.
+​
+6.0.19.0
+Added more documentation on finding the QFX financial institution's Id.
+​
+6.0.18.0
+Merging of Quicken's memorized payees into the ImportQIF categories wasn't working for Quicken Subscription because they changed the .PRN file type to CSV.
+​
+6.0.17.0
+Changed the way it guesses the text encoding for OFX/QFX files.
+Reordered the information log messages for the options.
+​
+6.0.16.0
+When doing the conversion from the command line, ImportQIF could always get Quicken to the foreground.
+
+6.0.15.0
+For QFX output I'm using the account name for the OFX field <ACCTID> which shows up in Quicken as the account number.  That field is limited to 22 characters by the OFX standard.  So, for longer account names this was causing a syntax error. Now if the account name is larger than 22 characters it will use the first 18 characters and the last 4 characters.  Note this isn't going to be the account name that Quicken uses, it will use the one that you provide when you first create the account.
+​
+6.0.14.0
+Added option to manually enter the QFX current balance.
+
+6.0.13.0
+Removed an error message for when converting to QFX and the CSV mapping isn't using the running balance.  The actual conversion was fine.
+
+6.0.12.0
+Fixed a problem where it was reporting a bad file descriptor when converting from QFX to QIF, even though the conversion actually was fine.
+
+6.0.11.0
+Allow the user to use a running balance column in the data to set the Online balance/QFX ledger amount when converting an Excel/CXV non-investment account to QFX format.
+Fixed a problem where rename and move were failing.
+​6.0.10.0
+Fixed a problem where the conversion to QFX file would fail if the user maps the Account column/field, but doesn't turn on the Map Accounts option.
+​
+6.0.9.0
+Change the "Enable QFX" toggle button to a checkbox.  Hopefully this will be more visible to people.
+​
+6.0.8.0
+Needed to correct for new OFX syntax that can have <ofx:OFX instead of just <OFX when parsing QFX/OFX files.
+​
+6.0.7.0
+Need to truncate long payee and memo fields when converting between CSV/Excel and QFX format.
+​
+6.0.6.0
+File Option "QFX Securities Info File" was changing back to the default at startup.
+​
+6.0.5.0
+Added the Return of Capital security action.
+The outputted QFX file was being open in Quicken even if the auto import option was off.
+Converting an OFX/QFX investment expense action to a QIF action/transaction was failing.
+
+6.0.4.0
+The account level setting for swapping the payee and memo wasn't working for OFX/QFX files.
+
+6.0.3.0
+If the price has a space between the dollar sign and the number in the price, it was rejecting the price.
+​
+6.0.2.0
+Fixed another problem with the loading of Excel files.
+​
+6.0.1.0
+Fixed a bug that blocked the loading of Excel files.
+​
+6.0.0.0
+ImportQIF is now free to use.
+The automatic import option being off wasn't being honored.
+For some reason CSV files with quoted strings was no longer being done right during the conversion, even though it was done right for the viewer and column mapping.
+
+5.1.2.0
+Added some extra debugging for when buttons are pressed in Quicken to import QIF files.
+
+5.1.1.0
+Some financial institutions are putting two negative signs in front of the amount to mean a positive amount.
+ImportQIF will now remove -- from the amounts.
+​
+5.1.0.0
+Changed how and where ImportQIF is installed so that it can be installed without administrator privileges.
+​
+5.0.19.0
+If the amount column doesn't have any value in it, ImportQIF would post an error on each of these lines.
+​
+5.0.18.0
+Updated documentation on the use of the Account and Filter columns.
+Changed so that if the user has selected Map Accounts, but has not selected an Account column in their Excel/CSV file, ImportQIF will ignore the Map Accounts option instead of rejecting each transaction because there isn't an Account column.
+​
+5.0.17.0
+AMEX QFX files don't exactly adhere the OFX standard, changed to be more flexible on the syntax of QFX/OFX files.
+
+5.0.16.0
+When converting OFX/QFX files with Map Unique Ids on and Map Accounts off ImportQIF wasn't properly saving the unique Id information, and as such wouldn't ignore transactions properly.
+
+5.0.15.0
+For Excel files if the last row in the last column didn't have any data in it, the column wouldn't be included.
+
+5.0.14.0
+Had the wrong variable for the debug statement for the account mapping file.
+
+5.0.13.0
+Allow for CSV files that have a BOM at the beginning of the file when formatted in UTF-8 format.
+
+5.0.12.0
+Added an account option for OFX/QFX files the reverses all the amount signs on cash transactions.
+
+5.0.11.0
+Allow user to set a transfer account for cash dividends and interact actions.
+Found a problem for BuyX and SellX where Quicken is using an extra field in the QIF transaction to determine what the transfer amount is.  The problem shows up as zero amount transfer in the cash/checking account.
+
+5.0.10.0
+For a CSV file if the column data ends in a \ remove it since it messes up the parsing.
+
+5.0.9.0
+Allow (xxx.xxx) negative shares syntax.
+Test for number of columns in CSV files wasn't right for empty files.
+
+5.0.8.0
+In some cases ImportQIF thought that a CSV file was separated by commas when in fact it was separated by tabs.
+
+5.0.7.0
+Put in more informational logging.
+
+5.0.6.0
+Quicken Inc is up to their old tricks again, and aren't using the real main window/toolbar, and hiding the one they are using.
+So the standard way to find and select things off of the system menu no longer work in the subscription version of Quicken.
+I have worked around this with just sending the proper keystrokes to the Quicken window.  This isn't as reliable as the standard method, but it does seem to be working (for now).  Note that this problem starts with Quicken version 27.1.19.34.
+
+5.0.5.0
+Handle the use case where an investment transaction in a CSV/Excel file doesn't have an action.  Convert it to "NoAction" so that the user can map it to some action.
+
+5.0.4.0
+Fixed a bug that prevented ImportQIF from exporting the memorized payee list from Quicken when using the Merge button.
+
+5.0.3.0
+Fixed a bug that was introduced with the adding of the QFX mode where when converting CSV files with multiple accounts addBalance is called when not using QFX mode.  addBalance should only be called for QFX mode.
+
+5.0.2.0
+Fixed the formatting of the Setup tab help page.
+
+5.0.1.0
+A bug was introduced that made it think that it was in QFX mode when the input data file was a QIF file, and blocking it from doing the convert/import.
+
+5.0.0.0
+Found a bug where if the user maps a given investment action name to a cash action and there are investment actions using that same action name they will be overridden with no way to control the investment action.  Made it an option that the user can override.
+Added the ability to convert an Excel or CSV file to QFX format instead of QIF format.
+4.4.8.0
+Allow for using semi-colons for separating CSV fields.
+Added more to the message about ignoring all the transactions to point out that you might want to turn off the account option Use Unique Ids.
+​
+4.4.7.0
+Log the column mapping when the log level is information and doing a CSV/Excel conversion.
+​
+4.4.6.0
+Added documentation on the column mapping page for the format to use for split transactions.
+​
+4.4.5.0
+If the character decoder guess returned XXX or YYY I wasn't doing anything to decide which encoding to use.
+Try to default to utf8 if it is one of the choices, if not default to the first one given.
+
+Log a warning in either case.
+The setup options were being cutoff if the window was reduced to the minimum size.
+Put in a scroll bar for the options.
+
+The dialog warning about using wild card security names wasn't able to be closed because
+it was going back to the security mapping dialog and giving it focus instead of the warning dialog.
+
+4.4.4.0
+Allow the user to name the Converted.QIF file including adding the account name and a date and time stamp.
+Allow the user to select a "backup folder" for where to store the Converted.QIF file.
+​
+4.4.3.0
+Added iso-8859-15 character encoding for HSBC in France.
+Made the QIF tolerant of characters after the date.
+
+4.4.2.0
+Added support for applying a map payee/category/action rule for only a given account.
+Increased the size of the buttons on the Run tab slightly because the text was getting cut off in some cases.
+​
+4.4.1.0
+Added support for splits
+
+4.3.9.0
+Default setting for Use Unique Ids for new users will be changed to off.
+
+4.3.8.0
+The wording on the map category dialog was confusing, so I changed it to read more like a sentence.  And the same for the map payee and map security dialogs.
+
+4.3.7.0
+This is a rebuild of 4.3.6.0 because Windows Defender called out that installer as being a virus.
+I believe that was a "false positive" on Windows Defender's part.  Virus detection is far from an exact science.
+Most of it is looking for "bit patterns" of known viruses.  And as more viruses are found there are more "patterns" and those patterns can just randomly line up with code that has no virus in it.  In this case the code for 4.3.6.0 was installed a few days with no problems and Windows Defender didn't detect any threats.  Today Windows Defender is calling the same code a threat. Most likely because it just got a new set of "patterns" and one of them lined up with the 4.3.6.0 code.  At any rate, Windows Defender doesn't have any problems with 4.3.7.0 at this point so use it instead of 4.3.6.0.
+
+4.3.6.0
+The function I was calling to create unique Ids doesn't handle wide-characters correctly, so I will encode them properly before calling that function.
+Try to match the same encoding for Converted.QIF as what the input data files was read with (exception is an Excel data file, because it is Excel that is reading it.
+
+4.3.5.0
+Help files were not being installed and so when the user selected F1 nothing happened.
+
+4.3.4.0
+For some people the WMI service calls aren't working.  For these cases get the needed information in a different way.
+
+4.3.3.0
+Make all of the Run buttons the same size, so they don't appear so messy.
+
+4.3.2.0
+Windows Defender was reporting ImportQIF 4.3.1.0 as a virus threat.  This was a false positive (reporting the virus when there isn't one).  But to make Windows Defender happy I have rebuilt ImportQIF so that it is slightly different.
+
+4.3.1.0
+Installer didn't take into account if the username had a space in it.
+
+4.3.0.0
+Added the ability to add a category to transactions based on the payee.  This is the Map Categories option.
+
+4.2.1.0
+If there is a lot of leading zeros in the price or share amount Quicken will truncate the values.
+So ImportQIF will now format these as amounts instead of text, so that the leading zeros will be stripped off.
+
+4.2.0.0
+Allow the user to use multiple accounts in an Excel/CSV investment file.
+
+4.1.4.0
+This is a rebuild of 4.1.3.0 because Windows Defender called out that installer as being a virus.
+I believe that was a "false positive" on Windows Defender's part.  Virus detection is far from an exact science.
+Most of it is looking for "bit patterns" of known viruses.  And as more viruses are found there are more "patterns" and those patterns can just randomly line up with code that has no virus in it.  In this case the code for 4.1.3.0 was installed a few days with no problems and Windows Defender didn't detect any threats.  Today Windows Defender is calling the same code a threat. Most likely because it just got a new set of "patterns" and one of them lined up with the 4.1.3.0 code.  At any rate, Windows Defender doesn't have any problems with 4.1.4.0 at this point so use it instead of 4.1.3.0.
+
+4.1.3.0
+Excel doesn't work right for file names where forward slashes are used instead of back slashes.
+
+4.1.2.0
+Added the sub category column type for non investment accounts.
+Allow using the Account column type on more than one column
+
+4.1.1.0
+If all the transactions were ignored, warn the user that is the case, instead of going on and trying to import a QIF file that is empty.  Note the avoids a "stuck on QIF dialog" error which would be generated because Quicken will not do anything on the import if the QIF file is empty.
+
+4.1.0.0
+Added support for BuyX and SellX when using Excel/CSV files.
+
+4.0.0.0
+Added the ability to use unique ids to ignore duplicate transactions.
+Added support of OFX/QFX investment data files. 
+OFX/QFX data files can have multiple accounts in a single data file.
+Added the mapping of account ids/names to for OFX and QFX input data files.  And for Excel/CSV files when the Account column mapping is being used.
+Added the ability to swap the payee and memo on an account by account basis.  Note this is for all input data file types except Excel and CSV, which don't need this option since this can be controlled in the column mapping.
+3.2.4.0
+A bug was introduced in 3.2.1.0 which causes Help -> Save Log File..., File -> Backup Settings As..., and File -> Restore Settings... to create empty output files.
+
+3.2.3.0
+In some cases ImportQIF wasn't properly selecting a cash account when available.  The result was that Quicken was ignoring transfers in imported data.
+
+3.2.2.0
+In some cases, ImportQIF was printing warning message for every transaction being converted.
+
+3.2.1.0
+Changed to allow for better debugging.
+
+3.2.0.0
+Allow the user to map investment actions to cash actions even if the number of shares isn't zero.
+
+3.1.9.0
+As it turns out "" with spaces after it is a violation of the CSV spec, so
+the parser was doing the right thing to reject it, and I shouldn't have tried
+to preparse the lines to "fix" it.
+As it is illegal to have:
+"field 1"  ,field2,field3
+That is why having a last field with "" and then spaces is wrong.
+
+My preparsing was breaking up the CSV into separate line and messing up the parsing
+for cases where a field is in quotes and takes up more than one line.  Which is
+perfectly acceptable syntax.
+
+I fixed this by telling the parser to trim the (illegal) spaces before or after the column separator that has quotes.
+
+This will mean that something like:
+field 1, field2 ,field3
+will become:
+"field 1","field2","field3"
+White space around field2 is removed.  Not perfect but for the use case of ImportQIF this should be fine.
+
+3.1.8.0
+-Account should have been -Amount in the documentation.
+
+3.1.7.0
+For non OFX/QFX files if the character encoder can't guess at what the character encoding is set the encoding to ASCII instead of issuing an error.  But also log it as a warning.  This is a hope to work with files that are using extended characters without the proper encoding.
+
+3.1.6.0
+Changed the checking of the license information so that hopefully it even less likely to be affected by changes to the machine.
+
+3.1.5.0
+ImportQIF wasn't honoring the Don't clear transactions option for investment accounts.
+
+3.1.4.0
+If the user used an expression for mapping either the payee or action name that won't match the original payee or action the user would be prompted again the next time they were importing and wonder what was up.  This is more likely to happen with regular expressions which are much harder to get right than using Contains or Starts_With.  Now if the expression the user provides doesn't match the original payee or action ImportQIF will warn them about it.
+Added investment actions Reinvest long and short capitol gains.
+
+3.1.3.0
+Found a problem in the code that handles the new licensing.  It sometimes would call a license file invalid when it was in fact a valid license for the machine.
+
+3.1.2.0
+The computer code was exceeding what PayPal would allow for that field, so truncate long computer codes.
+
+3.1.1.0
+The CSV file parser I'm using has a problem with the line ends with ,"" and then a space(s).
+I'm now pre-parsing the line to remove any trailing spaces.
+
+3.1.0.0
+Changed generation of license file.  Hopefully with this method the license file will not become invalid as much.
+ImportQIF will still accept the old license file, but when generating a new license file, it will use the new method.
+
+3.0.21.0
+Allow for converting QFX files.
+
+3.0.20.0
+Added support for CSV/Excel files where you can ignore transactions based on what is in the Type column.  This allows for ignoring pending transactions.
+
+3.0.19.0
+Increased the timing on how long to wait for the Quicken QIF Import dialog to come up.
+If all the information needed for the licensing can't found log it, but base the license on what can be found.
+
+3.0.18.0
+Changed documentation to point out that with Quicken 2016 R8 the user no longer has to turn off automatic transaction entry.
+Changed the way that auto import is disabled, so that if a person's license becomes invalid and then they get a new license, they don't have to deal with turning automatic importing back on.
+
+3.0.17.0
+Added a feature to CSV/Excel column mapping to allow for filtering out some transactions (ignore them), based on data in the Filter column.
+Fixed a bug where it would report that t.t.scrolled window didn't exist.
+Changed the warning about turning off automatic transaction entry in Quicken for Quicken 2017 and above because the problem was fixed in Quicken 2016 R8.
+
+3.0.16.0
+It seems that the Quicken QIF import has a limit of 11 characters for the check/reference number.  It truncates anything after this amount of characters.  I have changed ImportQIF to removing leading zeros, which in some cases will make long check/reference numbers import without truncating, but that is the best I can do to help this problem.
+
+3.0.15.0
+Data file character encoding was sometimes not being guessed correctly for OFX files.
+
+3.0.14.0
+Added more logging of what check boxes are selected on the Quicken QIF Import dialog (When the ImportQIF Log Level is set to Information)
+Updated the documentation to warn people doing a manual import of the Converted.QIF file, that if they have transfers in their data, they need to deselect the Special handling for transfers option on the Quicken QIF import dialog.  If you don't do this Quicken will remove the "from" side of every transfer.
+
+3.0.13.0
+Fixed a problem where the license file was not loading if the path to the license file has accented characters.
+
+3.0.12.0
+Allow for accent characters being in file names.
+
+3.0.11.0
+Moved the using of temp folder option lower down on the Setup tab, so that this setting is above the setting of the Start Folder.  Hopefully it will be clearer here that these are connected.
+Updated documentation for the above, and for consistently using Converted.QIF instead of using Convert.QIF in a few places.
+
+3.0.10.0
+The new support for tab separated CSV files introduced a bug that prevented ImportQIF to correctly identify the data file character encoding.
+
+3.0.9.0
+Work around some files that have garbage characters in them.
+Work around CSV files that leave off the trailing comma when the field is blank.
+
+3.0.8.0
+If ImportQIF couldn't be Quicken to the foreground to do the import, the error message that came up complained about not being able to post the error message.
+Brought the documentation, up to date to reflect the changes in menus, and to make it easier to understand.
+
+3.0.7.0
+Added support for tab separated CSV files. (tab separated values, opposed to comma separated values.)
+
+3.0.6.0
+Added a new Record Problem... to the Help menu.  When selected it grab screenshots as a person reproduces a problem.
+Selecting it again turns off the recording and saves the screenshots and the ImportQIF log file to the user's desktop.
+Changed the Licensing... -> Request Additional Activation Code... menu to Request Additional License File...
+
+3.0.5.0
+Give a different warning when the license file has nothing in it.  This can happen if the user's email or anti-virus software is blocking the ImportQIF.lic file (it deletes the contents of the file).
+
+3.04.0
+Changed the word "flag" to "set" in the error message about not setting up the columns right in the column mapping window.
+
+3.0.3.0
+In the mapping of payees and actions the characters ( ) [ ] were being treated as special regular expression characters when using Start_With and Contains, and that wasn't the intention.  But note these are special regular expression characters if you are using the Reg_Exp.
+
+3.0.2.0
+Updated documentation on the log file, and log levels.
+
+3.0.1.0
+Added Help -> Save Log..., to make it easier to save and send log files.
+
+3.0.0.0
+Updated all the documentation.
+Adding column mapping data for CSV/Excel files has been changed to first adding the account, and then the column mapping data (Add Map Data check box has been removed).
+Added support for changing account settings after the account has been created.
+Added support for backing up and restoring ImportQIF settings.
+Added support added for editing the column mapping for CSV/Excel files.
+Added support for editing the run action/type data mapping.
+
+2.11.1.0
+Fixed bug introduced in 2.11.0.0 where when the data file is a QIF file, all the payees come up blank.
+
+2.11.0.0
+Added a feature to allow mapping the payee in the data file to another payee of the user's choosing.  This is needed mostly because Quicken's renaming rules are not applied to QIF imports.
+Changed the mapping of actions, to give a few basic choices on how to match the action in the data file.  Note the new mapping of the payee has this too.
+Changed so that if the user selects the option not to require the payee, they don't have to use a payee column for a CSV/Excel conversion.
+
+2.10.4.0
+Allow for the account names using the "upper character set", like accented characters.
+
+2.10.3.0
+When no transactions are found for a CSV/Excel data file, I have changed the error message to report a count of the fields that were rejected.
+
+2.10.2.0
+Allow for dates that use long or short formatted text, and for dates in that format with no year.  The year is guessed to be either the current one, or if the month is in the future, it will use last year.
+
+2.10.1.0
+Fixed problem with guessing the data file character encoding, when the encoding is UTF-16.
+Allow the user to use cash dividend/interest even if the shares column has a number of shares in it.
+Removed the prompt for every action option, because I removed the trying to guess at common actions because it causes more problems than it solves.
+
+2.10.0.0
+Added the investment transaction action mapping feature.
+
+2.9.4.0
+Change warning dialog on the column mapping window to make it clear that the Price can be a computed value instead of in a column.
+Added accepting Excel files with the extension of .xlsm.
+
+2.9.3.0
+A bug was introduced by the changes in 2.8.0.0 where you can't browse for an Excel file.  The file filters were not right.  If the user types in the file name or uses something like Open With, it will load in fine.  This is now fixed.
+
+2.9.2.0
+Added warnings for when the user first tries to change the Non US/Canadian options.
+
+2.9.1.0
+Added the option to save the Converted.QIF file and transaction logs in the "Start Folder" location.
+Added the URL of the release notes to the message given the user when they check for new versions of ImportQIF from the Help menu, and they don't have the latest version.
+
+2.9.0.0
+Added allowing for checking for a new version of ImportQIF from the Help menu.
+Using the stretch mode all for the column data was making the user resizing of columns very "strange".  Changed to default columns to the size of the max text in the column, and do not automatically resize the column for the user after that.
+
+2.8.10.0
+Removed all the warnings from the website about turning off automatic entry in Quicken, except on the manual import documentation page.  ImportQIF will warn the user the first time they do an import.
+If the user selected two different date formats in to two different columns of the column mapping, the first one wasn't being set to Ignore like it should be.
+
+2.8.9.0
+Fixed where in some cases ImportQIF could crash if the user cancels from the column mapping window.
+
+2.8.8.0
+There was a bug introduced in the security mapping.  If you choose to use map the securities, only the first transaction would be converted.
+
+2.8.7.0
+Improved the startup time slightly.
+
+2.8.6.0
+Changed so that the check #/TXFR workaround option is applied to QIF files too.
+
+2.8.5.0
+Minor documentation updates.
+
+2.8.4.0
+Updated with warnings about the Starter version needed a cash account to be able to do a QIF import.
+Also changed to so that DLLs are loaded directly into memory instead of to the temp directory.
+Updated the estimate on the disk space ImportQIF uses.
+
+2.8.3.0
+Clean up temp files instead of leaving them to try to get a faster start up.  The startup speed isn't really that much different without the temp files, and in certain circumstances they can cause problems.
+
+2.8.2.0
+Fixed a problem where ImportQIF starts up off screen when the users display setting have been changed.
+Change so the the size and position of ImportQIF is not saved if ImportQIF is in maximized mode when closed.
+Fixed so that an account is not created if they asked for column mapping, but didn't provide it (canceled out).
+
+2.8.1.0
+Improved the guessing of the data file encoding.
+
+2.8.0.0
+ImportQIF no longer needs the Visual Studio 2010 C++ run time library.
+
+2.7.3.0
+Changed the handling of the Map Securities File on the Options tab, so that it is a bit more convenient.  Before the user had to create a CSV file to select with this option.  Now it will default to a file in the user's Documents folder.  Note the file will be created on the first use of a security mapping in an account conversion.
+
+2.7.2.0
+Removed the requesting of an additional license on the Help menu since this might confuse people to request the license code from at machine that already is licensed, instead of from the machine that needs the license.   The user should use the request that is on the Licensing... menu, which only shows up on a non licensed machine.
+
+2.7.1.0
+There was an error in the message about and invalid license.
+
+2.7.0.0
+Added Account column feature in non-investment Excel/CSV file conversions.  When the Account column is used in the column mapping, that column will determine the account used for that transaction.
+
+2.6.20.0
+Updated message when license is invalid, on how to get a new license file.
+
+2.6.19.0
+There was a timing issue with Quicken 2016's menus when importing the QIF file.
+
+2.6.18.0
+There was a bug in the Workaround blank TXFR/Check # Bug option that put a period in every check number even if the check number field wasn't blank.
+
+2.6.17.0
+Changed the No Empty Check Num option to Workaround blank TXFR/Check # Bug, to make it clearer of what this option does.
+Changed the default for the Workaround blank TXFR/Check # Bug option to Yes.
+Added more logging of the QIF import into Quicken.
+
+2.6.16.0
+When opening the workbook in Excel use the options to not update the links and to be in read-only mode.  Note that files with links in them were causing a beep (warning dialog that is hidden) when the option not to update links wasn't being used.
+When the trial period expires only disable the auto import, the other options don't matter.
+When they load a license file and auto import is off, ask if they want to enable it.
+
+2.6.15.0
+Added test to make sure the Converted.QIF really did get created.
+
+2.6.14.0
+Disable the run buttons while doing the conversion so the user can't start another conversion by double clicking.
+Log all the options before running a conversion, when the Log Level is set to Information.
+
+2.6.13.0
+Log the error for trying to find Excel.
+
+2.6.12.0
+If the memo or payee is more than about 180 characters Quicken will not import the transaction correctly.
+ImportQIF will limit these fields to 180 characters on CSV/Excel/OFX imports.  It will not change do anything with QIF files.
+Please note that Quicken truncates these fields to 64 during the import because the OFX standard says that is the max length for them.
+
+2.6.11.0
+For some people the functions calling the expanded "Open File" dialog isn't working right.  If this happens ImportQIF will use the more restrictive Open File dialog.
+
+2.6.10.0
+Make ImportQIF a bit more tolerant of having a time stamp in the date field.
+
+2.6.9.0
+Formatted the View Map data better, and made it so that it can be copied to a text editor.
+
+2.6.8.0
+Securities where not being mapped in the case of the Misc Income/Expense action.
+
+2.6.7.0
+Changed so that when mapping an action to Misc Income/Expense the security name is put in the transaction.
+Fixed a bug when reading CSV files were the last column was not detected correctly.
+
+2.6.6.0
+Changed text for the non standard options to make it clearer that these options are not to be changed for the US and Canadian versions of Quicken.
+Fixed the disabling of the account types and options on the Setup tab when the account name is selected from the account list.
+
+2.6.5.0
+Fixed errors that would be reported for dates columns if there was a dollar amount in the column instead.
+Improved the detection of the size of the data for an Excel sheet.
+
+2.6.4.0
+If the user is running for the very first time, two messages are logged before the directory that log file is in is created.  This causes two error messages about not being able to append to the log file.
+
+2.6.3.0
+Added printing the license information and if Excel is detected on the status bar when starting.
+Added putting up a message when the trial period has expired so the user will not be surprised when the advanced features stop working.
+Prettied up the options page a bit.
+Added the request to get an additional activation code (license file) on the Licensing... menu, because
+that might be where people might look for it on a second machine.
+
+2.6.2.0
+Log if Excel is available.
+
+2.6.1.0
+Added support for the Australian version of Quicken from Reckon.
+
+2.6.0.0
+Added an option so that the user can specify what the date format should be in Converted.QIF.
+
+2.5.69.0
+Updated documentation on turning off the automatic entry of downloaded transactions into the register, to reference the problem with Quicken 2015.  Note this change is on the help for the Run tab, when you press F1.
+
+2.5.68.0
+Added the options "Don't clear transactions", which means the cleared flag will not be set on the imported transactions.  But note this does not apply to QIF files.  ImportQIF will not alter the cleared/reconcile flag in a QIF file.
+
+2.5.67.0
+Minor changes to logging.
+
+2.5.66.00
+Added more logging information to help with licensing problems.
+
+2.5.65.0
+Display more information while loading/converting a large Excel file.
+Fixed a problem where dialogs came up on the wrong screen with multiple monitors.
+
+2.5.64.0
+Fixed so it will install on machines that don't have Excel.
+
+2.5.63.0 - Bad version, will not install on machines that don't have Excel on them.
+Improved the speed of reading Excel files.
+Fixed problem where it would sometimes complain about Unicode characters in the log file.
+Fixed warning about data that might have something like this aWord Sep anotherWord.
+
+2.5.62.0
+Added the "add shares" action for mapping to investment security action mapping.
+
+2.5.61.0
+Need to escape percent signs in some of the investment data fields so that sprintf() doesn't complain about them.
+
+2.5.60.0
+Blank line code caused ImportQIF stop on a blank line.
+
+2.5.59.0
+Ignore blank rows for CVS and Excel files.
+
+2.5.58.0
+For Excel spreed sheets put in code to skip over invalid values.
+
+2.5.57.0
+Added the No Empty Check Num option.  This will tell ImportQIF to put in "." for the check number in non-investment accounts.  This is needed to workaround a bug in the Quicken QIF import, which sometimes puts in TXFR for the check/reference number if the check/reference number is blank in the QIF file.
+
+2.5.56.0
+ImportQIF was not processing OFX files right if they only had one transaction in them.
+
+2.5.55.0
+When converting Excel/CSV files and the action starts with Cvr or Cover, ImportQIF will pick the QIF action of CvrShrt without prompting the user for what action to use.
+And when the action starts with Shrt or Short, ImportQIF will pick the QIF action of ShtSell without prompting the user for what action to use.
+
+2.5.54.0
+Fixed a problem where the swapping of the payee and the memo wasn't working right for QIF files.
+
+2.5.53.0
+Fixed a problem with error message about no CSV/Excel column mapping for a given account setup.
+
+2.5.52.0
+Added command line -run option.  See Running Quicken documentation for details.
+
+2.5.51.0
+Allow for a date like 20140109 when the format selected is DateYMD.
+
+2.5.50.0
+If the Excel file has blank lines at the top of the file it wouldn't find the data.  Changed so that there can be as many as 10 blank lines at the top of the data file.
+
+2.5.49.0
+The proper guessing of the file encoding was not being done when a CSV file is first read in.
+If a field of data in a CSV/Execl file has new lines in it, change them to spaces.
+
+2.5.48.0
+When processing investment CSV/Excel files put Sell Short transactions before Covers if they are on the same day.
+
+2.5.47.0
+A bug was introduced when the log the transaction option was added in 2.5.43.0 which meant that all cash investment transactions like Dividend and Interest were coded in the QIF file as Cash transactions.  Instead of Div and IntInc.
+
+2.5.46.0
+Some financial institutions put out the date in a QIF file using the pre-Y2K format where Quicken will think 1/1/14 means 1/1/1914.  ImportQIF will automatically clean up these kinds of dates in QIF files.
+
+2.5.45.0
+In the Security Map File if a line of the file doesn't have enough columns in it, just skip it.
+
+2.5.44.0
+Found a problem where strange combinations of line endings confused the code trying to determine what character encoding is being used.
+The error reported looked like:
+Can't locate object method "name" via package "iso-8859-1 or utf8" (perhaps you forgot to load "iso-8859-1 or utf8"?)
+
+2.5.43.0
+Added the option to log investment transactions to a CSV file on your desktop.  For instance you might log all the transactions you told ImportQIF to ignore.
+
+2.5.42.0
+Security mapping was not working right.  It was asking to map fields from header lines.
+
+2.5.41.0
+Changed the way to I bring up the documentation and webpages, where it won't show a console window (looks a bit nicer).
+
+2.5.40.0
+Updated documentation to remove the references to the old symbols that were placed after the account names to tell what kind of options were selected.  Instead the user should go to the Setup tab and click on the account name and it will show what options have been set.
+
+2.5.39.0
+Added an option where the user can make it so that the payee isn't a required field for a CSV/Regular account convert/import.
+
+2.5.38.0
+Documentation and licensing webpages where not coming up in Windows 8.1.
+
+2.5.37.0
+Try to strip out garbage NULL character in OFX files that one financial institution is putting in.
+
+2.5.36.0
+Changed from trying to import into <All Accounts> to using an exist user's cash/liability account instead (if available).  The data doesn't necessarily go into that account (it goes into the account the user setup in ImportQIF), but with <All Accounts> the from side of at transfer (category with syntax [ACCOUNT]) is always discarded by the QIF import, it is kept if the account to selected in the QIF import dialog is a cash/liability account.  If you use the [ACCOUNT] syntax in a Excel/CSV for a transfer, make sure you have at least one cash or liability account so this will work right.  If you don't ImportQIF will import into <All Accounts> and the "from" side of the transfer will be discarded by Quicken, and the transaction will only appear if you import the "to" side of the transaction.
+
+2.5.35.0
+Added Remove Shares option for the mapping of investment transaction actions.
+
+2.5.34.0
+Translate tab characters to spaces since Quicken QIF import doesn't seem to like tabs.
+
+2.5.33.0
+Added an Ignore option for the mapping of investment transaction actions.
+Added Quicken 2014 support.
+
+2.5.32.0
+Fixed uninitialized variable when using compute prices option and there is no Fees column selected.
+Added the compute option to the View Map output.
+
+2.5.31.0
+Added support to compute the price of the security, instead of computing the fees.  You can also select to not compute either.
+
+2.5.30.0
+Regular expression for matching security was getting thrown off by () in the security name.
+Method to find the last used column in an Excel spreadsheet wasn't working right.  So rows of data might have been lost.
+Security mapping for CSV/Excel files was being done at the wrong point, so it was mapping anything in the security column even if that row was not valid data.
+
+2.5.29.0
+Quicken window incompatibility causes auto import to fail.
+
+2.5.28.0
+Changed the setup and run tabs no longer use special characters like * + , ... to show which options are set.  Instead the user should select the account name on the setup screen and it will show the options that are set.  Also the options are disabled when the user has one of the accounts selected on the setup tab, to show that the user can not change them at this point.
+
+2.5.27.0
+Added better support for reading Unicode data files.
+
+2.5.26.0
+Added support for mapping the security name given in the data file to one of the user's choosing.
+
+2.5.25.0
+Added option to allow not including the account name and account type in the QIF.  This will not work right for Quicken, but was requested for importing the QIF into another program, that prompts for the account name and having it in the QIF file messes it up.
+
+2.5.24.0
+Report about a bad OFX file more gracefully.
+
+2.5.23.0
+Minor update to documentation.
+
+2.5.22.0
+If OFX data has the illegal combination of the transaction type of DEBIT and a positive amount, make the amount negative.
+
+2.5.21.0
+Added option to allow for replacing the amount formats like 100.000,00 to 100000.00 that Quicken QIF files need.
+Added option to swap payee and memo fields.
+
+2.5.20.0
+Added option to have ImportQIF store the Converted.QIF in the user's temporary folder instead on their desktop.
+
+2.5.19.0
+Changed the method for finding the last cell in the Excel work sheet so that it doesn't use any language dependent keywords.
+
+2.5.18.0
+Fixed: Excel importing was not working on some machines, giving an error that says an undefined value was used with "Row".
+
+2.5.17.0
+Allow transactions in OFX format that do not include a payee.
+
+2.5.16.0
+Put in code to remove a category of Transfer is it exists, because Quicken 2013 will throw up a warning saying that the data is using something reserved for the cloud.
+
+2.5.15.0
+Put in code to try to strip out old QIF headers that might cause problems when adding in the new account header.
+
+2.5.14.0
+Sub categories for MiscExp/MiscInc were not being handled correctly.
+
+2.5.13.0
+Misc Expense/Income was not handled properly in the investment account and Quicken showed it as a withdraw.
+It will now be properly handled and show as MiscExp or MiscInc.
+
+2.5.12.0
+Added support for Short Sell and Cover for Short Sell, in CSV/Excel format.
+
+2.5.11.0
+Remove all none ASCII characters from all fields in Excel data.  Quicken can't handle non ASCII characters anyway.
+
+2.5.10.0
+Fixed a problem where a "Non-breaking space" was used in a date in an Excel spreadsheet.  The "Non-breaking space" is outside the normal
+character range.  It will be changed to a normal space.
+
+2.5.9.0
+When the user loads in a file for setting the column mapping, also load that file into so that it can be used right away to do a conversion, instead having to follow the column mapping operation with opening the file to run the conversion.
+Added the ability to rename an account.
+Added the ability to view the current column mapping for an account.
+
+2.5.8.0
+Added the Excel file type of .XLSX.
+
+2.5.7.0
+If the values in a OFX file had white space (spaces, tabs, line feeds) around them ImportQIF could not parse the file.  Leading and trailing white space will not be removed from all values.  This is a good thing because you wouldn't want that space taking up the precious 64 characters in things like the payee.
+
+2.5.6.0
+Since it is now legal to set Amount for more then one column, don't auto select the column for the Amount, so that ImportQIF doesn't select one column and the user selects another without realizing that ImportQIF has selected an Amount column.
+
+Every once and a while QIF Import dialog doesn't come up, it looks like it is because ImportQIF checks for the QIF Import dialog too quickly and interrupts that dialog coming up.  Giving it a bit of time before checking to see if the QIF import dialog is up after selecting the menu to bring it up.
+
+2.5.5.0
+When importing cash or liability accounts the account name instead of <All Accounts> has to be selected in the QIF import dialog, otherwise the transactions will not appear in the register.
+
+2.5.4.0
+When using -Amount and Amount together add them together so that it is legal to have $0.00 in one the fields instead of just an empty field.
+
+2.5.3.0
+In CVS/XLS conversions allow the date field to also have a time in it.  The time has to be after the date, and it will be stripped off since the QIF/Quicken doesn't accept a time, just the date.
+
+2.5.2.0
+Quicken 2010 and below can not be on portfolio view when importing a QIF file, I have speed up the changing over to the home tab if needed.
+
+2.5.1.0
+Moved program shortcuts in start menu to its own folder.
+
+2.5.0.0
+Now allow the syntax of ($XXX.YY) for negative numbers.
+Added Misc income and expenses choice for a Cash action in an investment CSV import.
+
+2.4.0.0
+Added limited support for importing investment transactions from CSV/XLS files.
+Strip out !Type: lines from QIF files so that they don't conflict with the !Type: line ImportQIF adds
+
+2.3.0.0
+Added a "transaction type" to the CSV mapping.  The transaction type column has a word in it that tells if the amount column is
+negative or positive.  For instance if the transaction column says "debit" the amount should be made negative.
+
+2.2.4.5
+Changed the automatic import to Quicken, because  the QIF import dialog in the Canadian version of Quicken is different then in the US version.  ImportQIF will now work with both.
+
+ 2.2.4.0
+Changed the automatic import to Quicken to be more flexible of what the title is on Quicken so that it works with Quicken versions from Canada.
+
+Changed so that the date parameters in CSV/XLS conversions will allow dates like 11-Jul-2011, and January 11, 2011.  Please note this will most likely only work for English dates, as in January, February....
+
+2.2.3.2
+A bug introduced in 2.2.3.0 caused ImportQIF to throw an error about an undefined value when processing Excel (XLS) files, this is now fixed.
+
+2.2.3.1
+Fixed a bug where a window position would try to use an illegal .5 pixel position when positioning a dialog box, which would post a Quicken error.
+
+Changed to a new OFX parser, which at present shouldn't change anything about OFX to QIF conversion, but will allow for changing it in the future for possible other support like supporting investment accounts.
+
+2.2.2.0
+Allow the user to use two Account, and two -Account columns when mapping CSV data to QIF data.
+
+2.2.1.1
+There was a bug in the Excel (XLS) reader that caused it only to read only half of the transactions.  This is now fixed.
+
+2.2.0.2
+The Visual Studio C++ 2010 runtime library has to be installed so that the new use of the standard Windows open dialog, introduced in version  2.2.0.1, and ImportQIF install and run.  The install for ImportQIF will detect if it is missing and run the install if it is needed.
+
+2.2.0.1
+Changed the File -> Open dialog to the standard Windows  one.  One person reported that ImportQIF crashed when trying to use the old Open dialog.  Gave the person with the problem this version to try, but the person did not confirm if the crash was fixed or not.  The standard Open dialog allows you to resize the dialog so this one is better anyways.
+
+2.2.0.0
+Support for the XLS (Excel) format conversion to QIF, if the user has Excel installed on their machine.
+
+2.1.3.0
+If the user is in the portfolio view on older versions of Quicken the QIF import menu will be replaced by the CSV price import.  So if the QIF menu is not available, ImportQIF will switch off of the current view before trying to do the import when automatic import of the QIF file is enabled.
+
+If the user is using popup registers windows the automatic import of the QIF
+into Quicken wasn't working correctly, this has been fixed.
+
+2.1.2.0
+Corrected some error reporting in the install.
+
+2.1.1.0
+OFX to QIF conversion now works when the decimal point separator is comma instead of a period, as in both of these work: 100.00 and 100,00.
+
+2.1.0.0
+Support added to translate non US dates in QIF files to US dates (Which is what the US version of Quicken requires).  Note this is supported in the free part of the program.
+
+2.0.6.0
+Changed "Add CSV Data" to "Add CSV Map", which hopefully is more descriptive of what it is for.
+
+Fixed a problem where if you reinstall the same version of ImportQIF on a  Windows 7 machine it would report a compatibility problem suggesting that ImportQIF didn't install correctly when it really installed just fine.
+
+2.0.5.0
+When user closed CSV Mapping dialog from the Windows close button CSV data was left in an undefined state causing warning dialogs later.
+
+Minor changes of help document to point out that the CSV tab is just to  verify what you data looks like, and to use the CSV Mapping dialog to actually tell ImportQIF how your CSV data maps to the QIF data.
+
+2.0.4.0
+Found a way to un-minimized Quicken when doing an automatic import of the QIF, so Quicken can now be minimized and the automatic import will still work.
+
+2.0.3.0
+Licensing was found not to work properly on Windows 7 64-bit.  Fixed.
+
+2.0.2.0
+Changed Help -> Request Activation Code... to Help -> Request Additional Activation Code...
+
+When automatically importing a QIF file and the account doesn't exist, changed the message to warn that QIF has a limited number of account types in comparison to Quicken so if you let it create the account at that time it might
+create the wrong account type.  Accounts should be created before importing the QIF file.
+
+2.0.1.1
+Added more checking and logging of trial period check operations.
+
+2.0.1.0
+Added the logging of warnings and fatal errors, and also displaying these to the user in a dialog, while installing and running
+ImportQIF.
+
+2.0.0.2
+Fixed problem where ImportQIF would not install on some machines.
+
+2.0.0.1
+Changed so that the license file is not deleted unless the user asks for the configuration information to be deleted.
+
+2.0.0.0
+Added advanced features, that include automatic import of the QIF into Quicken and support for CSV, and OFX files.
+
+1.0.0.X
+First release with basic features, that will create a QIF file with the proper account information added so that it can be imported into Quicken.  It will also allow for registering ImportQIF as the program to handle QIF files when they are opened.
+
+
